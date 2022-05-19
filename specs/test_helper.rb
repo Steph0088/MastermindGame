@@ -12,10 +12,4 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 Minitest::Reporters.use!
 Minitest::Reporters::SpecReporter.new
 
-
-#require 'date'
-
-#require_relative '../lib/date_range'
-# require_relative '../lib/reservation'
-# require_relative '../lib/room_block'
-# require_relative '../lib/hotel'
+require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/RandomSequenceClient.rb"
