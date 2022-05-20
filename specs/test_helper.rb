@@ -13,3 +13,6 @@ Minitest::Reporters.use!
 Minitest::Reporters::SpecReporter.new
 
 require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/RandomSequenceClient.rb"
+require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/codemaker.rb"
+require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/round.rb"
+require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/hints.rb"
