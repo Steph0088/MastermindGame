@@ -9,7 +9,7 @@ class Round
 
     def check_guess_against_code()
         user_results = []
-        reference_hash = map_code_to_hash()
+        reference_hash = map_code_to_hash() # call to private class helper method
         user_guess.each_with_index do |color,index|
             if reference_hash[color] &&  reference_hash[color] == index
                 user_results.push("red")
@@ -19,9 +19,14 @@ class Round
                 user_results.push("black")
             end
         end
-        #returning a shuffled array so that user has to figure out what is in correct position and what isn't
+        # returning a shuffled array so the computer’s feedback does not reveal 
+        # which number the player guessed correctly
         return user_results.shuffle!
     end
+
+    # Private Helper method used to create a reference_hash that maps the code sequences color 
+    # with its index in order to check players guess color and postion.
+
     private
     def map_code_to_hash()
         color_to_index_map = {}

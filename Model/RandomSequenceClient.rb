@@ -70,9 +70,9 @@ class RandomSequenceClient
             #     print body[i]
             # }
         when "medium"
-           puts "hello"
+           puts "medium level has yet to be implemented"
         when "hard"
-            puts "hi"
+            puts "hard level has yet to be implemented"
         else
             "incorrect level format"
         end
