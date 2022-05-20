@@ -16,3 +16,4 @@ require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/RandomSequenceCli
 require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/codemaker.rb"
 require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/round.rb"
 require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/hints.rb"
+require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/codebreaker.rb"
