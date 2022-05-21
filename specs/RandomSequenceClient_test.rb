@@ -11,18 +11,6 @@ describe "RandomSequenceClient class" do
           expect(sequence).must_be_instance_of Array
           expect(sequence.length).must_equal 4
         end
-
-        it "Returns an error message if no level is given" do
-             "not yet implemented"
-        end
-    end
-
-    describe "Handles Exceptions" do
-        "not yet implemented"
-    end
-
-    describe "Gives proper input if incorrect input given to getRandom Sequence method" do
-         "not yet implemented"
     end
 end
     

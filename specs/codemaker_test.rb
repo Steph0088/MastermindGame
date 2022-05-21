@@ -13,18 +13,6 @@ describe "Codemaker class" do
           expect(converted_sequence).must_be_instance_of Array
           expect(converted_sequence[0]).must_be_instance_of String
         end
-
-        it "" do
-             "not yet implemented"
-        end
-    end
-
-    describe "" do
-        "not yet implemented"
-    end
-
-    describe "" do
-         "not yet implemented"
     end
 end
     

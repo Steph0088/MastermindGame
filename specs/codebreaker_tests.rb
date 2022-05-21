@@ -17,11 +17,5 @@ describe "Codebreaker class" do
             expect(total_guesses[0].length).must_equal 4
             expect(total_guesses[0]).must_equal   current_guess
         end
-
-        # it "Coderbreakers guesses are validated before they added to queue" do
-        #     guess = codebreaker.guess = ["red"]
-        #     expect(guess).must_be_instance_of TypeError
-        #     expect(running_total).must_equal guess
-        # end
     end 
 end
