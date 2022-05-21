@@ -6,7 +6,8 @@ require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/codebreaker.rb"
 require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/IOManager.rb"
 
 class Game
-    attr_accessor :codebreaker_score, :computer_score, :active, :isPlaying, :max_rounds
+    attr_accessor :active, :isPlaying, :max_rounds, :current_round, 
+    :current_guess, :total_rounds_guesses, :code_broken
 
     def  initialize()
         @io = IOManager.new
@@ -16,6 +17,9 @@ class Game
         @max_rounds = 10
         @active = false
         @isPlaying = false
+        @total_rounds_guesses = []
+        @code_to_decipher = []
+        @code_broken = false
     end
 
     # assign player name, give user the rules of the game, set player to active
@@ -36,15 +40,12 @@ class Game
     #Once you start game keep track of rounds so they don't exceed 10
     #Once you start game keey track of codebreaker_Score, ComputerScore
     def start()
-        #maybe you will add max_rounds = 10 here undecided
-        codebreaker_score = 0
-        computer_score = 0
         isPlaying = true
     end
 
     def generate_code()
         sequence = @random_code.get_random_sequence("easy")
-        code_to_decipher = @codemaker.convert_to_colors(sequence)
+        @code_to_decipher = @codemaker.convert_to_colors(sequence)
     end
 
     def display_conceiled_code()
@@ -52,13 +53,6 @@ class Game
         @io.print_line("The Code to be deciphered:", false)
         @io.print_line("[X,X,X,X]",false)
         @io.print_line("Possible Colors in Code: purple, red, blue, green, orange, white, pink, magenta, teal", false)
-
-        # i = 0
-        # while (i < currentPhrase.mysteryPhrase.Length i++)
-        #     io.Print(#"{currentPhrase.mysteryPhrase[i]} ")
-        #     i += 1
-        # end
-        # io.PrintLine()
     end
 
     def prompt_guess()
@@ -68,63 +62,78 @@ class Game
         #TODO validates that they chose the correct code
         
         #might have to use regex here to validate the input
-        
+
         return guess.downcase
     end
 
-    # def HandleGuess(guess)
-    #     if (currentPhrase.CurrentPlayingPhrase.Contains(guess) && !usedLetters.Contains(guess))
-    #         usedLetters.Add(guess)
-    #         revealArr = currentPhrase.RevealLetters(guess)
-    #         j = 0
-    #         while (j < revealArr.Length)
-    #             if (revealArr[j] == guess) 
-    #                 correctLengthCount += 1
-    #             end
-    #             j += 1
-    #         end
-    #         if (correctLengthCount == currentPhrase.CurrentPlayingPhrase.Length)
-    #             GameWon()
-    #         else
-    #             io.PrintLine(#"Great guess, have another go.")
-    #         end
-    #     else
-    #         io.PrintLine("that was an incorrect letter")
-    #         incorrectGuesses += 1
-    #         if (incorrectGuesses >= maxGuesses)
-    #             GameLost()
-    #         end
-    #     end
-    # end
+    def handle_guess(guess)
+        current_round = Round.new(guess,@code_to_decipher)
+        @total_rounds_guesses.push(current_round.user_guess)
 
-    # def GameLost()
-    #     io.PrintLine(#"YOU LOSE! \nThe winning phrase: {currentPhrase.CurrentPlayingPhrase}", true)
-    #     isPlaying = false
-    # end
+        if (@max_rounds != 0)
+            #check the guess against the code to retrieve the colors
+            results_of_guess = current_round.check_guess_against_code()
+            if results_of_guess == ["red","red","red","red"]
+                @code_broken = true
+            end
+            #add the current guesses hints to hints history so it can be displayed to user.
+            current_guess_hints = @hints.give_hints(results_of_guess)
+            @io.print_line(current_guess_hints, false)
+            @io.print_line(@total_rounds_guesses,false)
 
-    # def GameWon()
-    #     io.PrintLine(#"YOU WON! \nThe winning phrase: {currentPhrase.CurrentPlayingPhrase}", true)
-    #     isPlaying = false
-    # end
+            hints_history = @hints.add_to_total_rounds_hints(current_guess_hints)
+            @max_rounds -= 1
+        else
+            if @code_broken == true
+                game_won()
+            else
+                game_lost() 
+            end
+        end
 
-    # def PromptNewRound()
-    #         restartResponse = io.PromptPlayer("Nice game! Would you like to play again? Y/N")
-    #     restartResponse.ToLower()
-    #     if (restartResponse == "y" || restartResponse == "yes")
-    #             Start()
-    #         else
-    #             active = false
-    #         end
-    #     end
-    # end
+    end
 
-    # def Finish()
-    #     io.PromptPlayer("Game Over.\n We shall meet again.", true)
-    # end
+    def display_guesses_and_hints_history()
+        @io.print_line(@total_rounds_guesses)
+        @io.print_line(@total_rounds_hints)
+    end
+
+   
+    def game_lost()
+        @io.print_line("YOU LOSE! \n Secret Code Revealed: #{@code_to_decipher}", true)
+        @isPlaying = false
+    end
+
+    def game_won()
+        @io.print_line("YOU WON! CODE BROKEN \nYou are a MASTERMIND!! Code: #{total_rounds_guesses.last()}", true)
+        @isPlaying = false
+    end
+
+    def prompt_new_game()
+        restartResponse = @io.prompt_player("Nice game! Would you like to play again? Y/N")
+        restartResponse.downcase()
+        if (restartResponse == "y" || restartResponse == "yes")
+            Start()
+        else
+            active = false
+        end
+    end
+
+    def finish()
+        @io.prompt_player("Game Over.\n We shall meet again.", true)
+    end
 end
 
 
 game = Game.new
 
 
-game.prompt_guess()
+#game.generate_code()
+#game.display_conceiled_code()
+#game.handle_guess(["red","purple","teal","white"])
+#game.game_lost()
+#game.game_won()
+#game.prompt_new_game()
+#game.finish()
+#game.display_guesses_and_hints_history()
+
