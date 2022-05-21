@@ -20,6 +20,3 @@ Overall design and implementation goal was to create a Minimum Viable Product th
 Located in project called UML.png.
 
 *note: This UML diagram does not follow UML syntax rules.*
-
-
-<img src="/MastermindGame/UML.png" alt="UML Diagram" style="height: 100px; width:100px;"/>
