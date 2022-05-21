@@ -17,10 +17,9 @@ Overall design and implementation goal was to create a Minimum Viable Product th
 ---
 
 ### UMLDiagram of the classes:
+Located in project called UML.png.
 
 *note: This UML diagram does not follow UML syntax rules.*
 
 
-[link](/MastermindGame/UML_CLASS_Diagram.jpeg)
-
-<a href="/MastermindGame/UML_CLASS_Diagram.jpeg">link</a>
+<img src="/MastermindGame/UML.png" alt="UML Diagram" style="height: 100px; width:100px;"/>
