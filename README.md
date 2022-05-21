@@ -20,6 +20,7 @@ Overall design and implementation goal was to create a Minimum Viable Product th
 
 *note: This UML diagram does not follow UML syntax rules.*
 
-![UML Class Diagram](/MastermindGame/UML_CLASS_Diagram.jpeg)
 
+[link](/MastermindGame/UML_CLASS_Diagram.jpeg)
 
+<a href="/MastermindGame/UML_CLASS_Diagram.jpeg">link</a>
