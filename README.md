@@ -1,10 +1,11 @@
-# MastermindGame
+## MastermindGame
 
-##Design and Approach: 
+### Design and Approach: 
 
 Overall design and implementation goal was to create a Minimum Viable Product that could be iterated, extended, and improved upon.
 ---
-##How to Run/Build Game:
+
+### How to Run/Build Game:
 <ol>
 <li> Clone github repository</li>
 <li> Open project in Ide of your choosing, visual studio, sublime etc.</li>
@@ -12,9 +13,11 @@ Overall design and implementation goal was to create a Minimum Viable Product th
 <li> If you don't use your terminal then go to the View Directory and run the program.rb file.</li>
 </ol>
 ---
-##UML Diagram of the classes:
+
+### UMLDiagram of the classes:
+
 *note: This is a UML diagram does not follow UML syntax rules.*
 
-![UML Class Diagram](/Reach/MastermindGame/UML_CLASS_Diagram.jpeg "Mastermind Game")
+![UML Class Diagram](/MastermindGame/UML_CLASS_Diagram.jpeg "Mastermind Game")
 
 
