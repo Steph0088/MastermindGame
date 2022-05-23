@@ -9,7 +9,7 @@ class IOManager
         return system('clear')
     end
 
-    def print_line(message = "", clear = false)
+    def print_line(message = "", clear = true)
         if (clear)
             clear_console()
         end
@@ -24,7 +24,7 @@ class IOManager
     end
         
     def prompt_player(message = "", clear = false)
-        puts(message)
+        print_line(message,clear)
         return get_user_input()
     end
 end

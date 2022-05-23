@@ -1,7 +1,7 @@
 class Codebreaker
-    attr_accessor :name, :guess, :total_guesses
-    def initialize(name = "Codebreaker")
-        @name = name
+    attr_accessor :guess, :total_guesses
+    def initialize()
+        
         @guess = guess
         @total_guesses = []
     end
@@ -14,7 +14,5 @@ class Codebreaker
     def add_guess_to_history(guess)
         total_guesses.push(guess)
     end
-
-
 
 end
