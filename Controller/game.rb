@@ -1,9 +1,9 @@
-require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/RandomSequenceClient.rb"
-require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/codemaker.rb"
-require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/round.rb"
-require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/hints.rb"
-require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/codebreaker.rb"
-require_relative "/Users/fridakahlo/Reach/MastermindGame/Model/IOManager.rb"
+require_relative "../Model/RandomSequenceClient.rb"
+require_relative "../Model/codemaker.rb"
+require_relative "../Model/round.rb"
+require_relative "../Model/hints.rb"
+require_relative "../Model/codebreaker.rb"
+require_relative "../Model/IOManager.rb"
 
 
 class Game
@@ -90,6 +90,7 @@ class Game
                 @active = false
             end
         current_guess_hints = @hints.give_hints(results_of_guess)
+        
 
         @total_rounds_guesses.push(@current_guess)
         @total_rounds_hints.push(current_guess_hints)
@@ -106,6 +107,7 @@ class Game
         @active = false
     end
 
+    
     def game_won()
         @io.print_line("YOU WON! CODE BROKEN \nYou are a MASTERMIND!! Winning Code: #{@total_rounds_guesses.last()}", true)
         @is_playing = false
@@ -130,13 +132,33 @@ class Game
     end
    
     def update_guess_and_hint_history(guess, current_guess_hints)
+        #@total_rounds_guesses = [['red','red','blue','blue'],['red','red','red','red']]
+        #@total_rounds_hints = [["bla;fkdlajfladfkdl"],['blahshdfkdfljfdak'],['blajfdlkjfdla;fjkdl;afjd']]
+        
+        
         last_guess_made  = @total_rounds_guesses.last()
+        last_round_hints = @total_rounds_hints.last()
+        # puts "These are the total guess array #{@total_rounds_guesses}"
+        # puts "This is the last round guess #{last_guess_made}"
+        
+        # puts "These are the total guess array #{@total_rounds_hints}"
+        # puts "These is the last guess made: #{last_round_hints}"
         last_guess_string = ""
         last_guess_made.each do |color|
             last_guess_string << " #{color}"
         end
-        
-        last_round_hints = @total_rounds_hints.last()
         @history_display["Round Number:#{number_of_rounds} Guess: #{last_guess_string}"] = last_round_hints 
+        #puts @history_display
     end
 end
+
+
+# theGame = Game.new
+
+# theGame.generate_code
+# theGame.prompt_codebreaker
+# puts theGame.handle_guess
+# theGame.display
+# #print 
+# #["blue","green","blue","red"],["red","blue","red","green"]
+# #puts theGame.update_guess_and_hint_history()

@@ -1,5 +1,5 @@
-require_relative "/Users/fridakahlo/Reach/MastermindGame/Controller/game.rb"
-
+require_relative "../Controller/game.rb"
+require 'io/console'
 class Program
     def run()
         theGame = Game.new 
@@ -7,7 +7,7 @@ class Program
         if theGame.initiate_game
             rounds = 1
             while theGame.active
-                while rounds <= 10 && theGame.code_broken == false
+                while rounds <= 3 && theGame.code_broken == false
                     until theGame.prompt_codebreaker()
                         theGame.prompt_codebreaker()
                     end

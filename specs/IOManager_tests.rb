@@ -1,6 +1,5 @@
 require_relative "test_helper"
 
-
 describe "IOManager class" do
     io = IOManager.new
     describe "Interact with commmand line" do

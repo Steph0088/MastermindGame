@@ -21,6 +21,5 @@ class Hints
 
     def get_total_round_hints()
         return total_rounds_hints
-    end
-    
+    end  
 end

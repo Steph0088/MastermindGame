@@ -10,9 +10,9 @@ class Round
     def check_guess_against_code_for_matching_values()
         reference_hash = map_code_to_hash() # call to private class helper method
         @user_guess.each_with_index do |color, index|
-            if reference_hash[index] && reference_hash[index] == color
+            if reference_hash[index] == color
                 @user_results.push("red") #Red == correct color and position
-            elsif reference_hash[index] == color
+            elsif reference_hash.has_value?(color)
                 @user_results.push("white")#white == correct color and incorrect position
             else
                 @user_results.push("black") #incorrect

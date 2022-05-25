@@ -1,7 +1,7 @@
 class Codebreaker
-    attr_accessor :guess, :total_guesses
+    attr_accessor :guess, :total_guesses, :name
     def initialize()
-        
+        @name = name  
         @guess = guess
         @total_guesses = []
     end
